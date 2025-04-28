@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Concept Sketch</title>
+    <style>
+        /* Sketch Styles */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+            color: #333;
+        }
+
+        .sketch-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 2px dashed #999;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Annotation Styles */
+        .annotation {
+            position: absolute;
+            font-size: 12px;
+            color: #666;
+            background: white;
+            padding: 2px 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Outline Components */
+        .outline-box {
+            border: 1px solid #000;
+            background: transparent;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .header {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 200px;
+            height: 40px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+        /* Navigation - Matches Screenshot */
+        .nav {
+            display: flex;
+            gap: 15px;
+            border: none;
+        }
+
+        .nav-item {
+            padding: 5px 10px;
+            border: 1px solid #000;
+            border-radius: 0;
+            background: transparent;
+            font-weight: normal;
+        }
+
+        .utility-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .text-size {
+            display: flex;
+            gap: 5px;
+        }
+
+        .text-size-btn {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            border: 1px solid #000;
+            padding: 5px;
+        }
+
+        .search-icon {
+            margin-right: 5px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .bento-cell {
+            height: 150px;
+            border: 1px solid #000;
+        }
+
+        .dewey-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .dewey-image {
+            border: 1px solid #000;
+        }
+
+        .dewey-content {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            height: 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .footer-section {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        /* Annotations */
+        .ann-logo {
+            top: 10px;
+            left: 10px;
+        }
+
+        .ann-nav {
+            top: 10px;
+            left: 250px;
+        }
+
+        .ann-search {
+            top: 10px;
+            right: 10px;
+        }
+
+        .ann-hero {
+            top: 120px;
+            left: 20px;
+        }
+
+        .ann-bento {
+            top: 350px;
+            left: 20px;
+        }
+
+        .ann-dewey {
+            top: 530px;
+            left: 20px;
+        }
+
+        .ann-footer {
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="sketch-container">
+    <!-- Header -->
+    <div class="outline-box header">
+        <div class="logo">Public Library of Aniston-Calhoun County</div>
+        <div class="annotation ann-logo">Logo/Title Area</div>
+
+        <nav class="nav">
+            <div class="nav-item">Home</div>
+            <div class="nav-item">Services</div>
+            <div class="nav-item">Accessibility</div>
+            <div class="nav-item">Events</div>
+            <div class="nav-item">Contact</div>
+        </nav>
+        <div class="annotation ann-nav">Main Navigation (matches screenshot)</div>
+
+        <div class="utility-buttons">
+            <div class="text-size">
+                <div class="text-size-btn">A</div>
+                <div class="text-size-btn">A</div>
+                <div class="text-size-btn">A</div>
+            </div>
+            <div class="search">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+        </div>
+        <div class="annotation ann-search">Text Size Controls + Search</div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="outline-box hero">
+        <h2>Welcome to Our Community Library</h2>
+        <p>Accessible to all, serving everyone in Aniston-Calhoun County.</p>
+        <div class="annotation ann-hero">Hero Section with Welcome Message</div>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="bento-grid">
+        <div class="bento-cell"></div>
+        <div class="bento-cell"></div>
+        <div class="bento-cell"></div>
+        <div class="bento-cell"></div>
+        <div class="annotation ann-bento">Bento Grid Quick Access (4 cells)</div>
+    </div>
+
+    <!-- Dewey Section -->
+    <div class="dewey-section">
+        <div class="dewey-image"></div>
+        <div class="dewey-content">
+            <h3>Meet Dewey, Our Library Cat</h3>
+            <p>Dewey has been welcoming visitors to our library since 2018.</p>
+        </div>
+        <div class="annotation ann-dewey">Dewey the Cat Section (Image + Content)</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="outline-box footer">
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>123 Library Street</p>
+        </div>
+        <div class="footer-section">
+            <h4>Connect With Us</h4>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+        </div>
+        <div class="annotation ann-footer">3-Column Footer</div>
+    </div>
+</div>
+</body>
+</html>

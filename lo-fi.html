@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniston-Calhoun Public Library - Accessible Design</title>
+    <style>
+        /* ===== DESIGN TOKENS ===== */
+        :root {
+            /* Grayscale palette */
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+
+            /* Typography */
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+
+            /* Borders */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--gray-900);
+            background-color: var(--white);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin: 0 0 var(--space-sm) 0;
+        }
+
+        h1 { font-size: var(--text-3xl); }
+        h2 { font-size: var(--text-2xl); }
+        h3 { font-size: var(--text-xl); }
+        h4 { font-size: var(--text-lg); }
+
+        a {
+            color: var(--gray-800);
+            text-decoration: underline;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .gap-xs { gap: var(--space-xs); }
+        .gap-sm { gap: var(--space-sm); }
+        .gap-md { gap: var(--space-md); }
+        .gap-lg { gap: var(--space-lg); }
+
+        .p-sm { padding: var(--space-sm); }
+        .p-md { padding: var(--space-md); }
+        .p-lg { padding: var(--space-lg); }
+
+        .bg-light { background-color: var(--gray-100); }
+        .bg-mid { background-color: var(--gray-200); }
+        .bg-dark { background-color: var(--gray-300); }
+
+        .rounded-sm { border-radius: var(--radius-sm); }
+        .rounded-md { border-radius: var(--radius-md); }
+        .rounded-lg { border-radius: var(--radius-lg); }
+
+        .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+        /* ===== COMPONENTS ===== */
+        /* Accessibility Toolbar */
+        .accessibility-toolbar {
+            background-color: var(--gray-800);
+            color: var(--white);
+            padding: var(--space-xs) 0;
+        }
+
+        .accessibility-toolbar .container {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-md);
+        }
+
+        .accessibility-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: var(--text-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        /* Header */
+        .header {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: var(--text-xl);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .nav-link {
+            padding: var(--space-xs) 0;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link:focus {
+            border-bottom-color: var(--gray-800);
+        }
+
+        /* Search */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: var(--space-xs) var(--space-sm);
+            padding-left: 2rem;
+            border: 1px solid var(--gray-400);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--space-sm);
+            color: var(--gray-500);
+        }
+
+        /* Text Size Controls */
+        .text-size-controls {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .text-size-btn {
+            background: none;
+            border: 1px solid var(--gray-400);
+            border-radius: var(--radius-sm);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            padding: var(--space-lg) 0;
+            margin-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .bento-cell {
+            padding: var(--space-md);
+            background-color: var(--gray-200);
+            border-radius: var(--radius-md);
+            transition: transform 0.2s;
+        }
+
+        .bento-cell:hover, .bento-cell:focus-within {
+            transform: translateY(-2px);
+            background-color: var(--gray-300);
+        }
+
+        /* Dewey Section */
+        .dewey-section {
+            display: grid;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .dewey-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--gray-300);
+            border-radius: var(--radius-md);
+            object-fit: cover;
+        }
+
+        /* Footer */
+        .footer {
+            padding: var(--space-lg) 0;
+            border-top: 1px solid var(--gray-300);
+            background-color: var(--gray-100);
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--gray-800);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ===== RESPONSIVE LAYOUT ===== */
+        /* Mobile (default) */
+        .bento-grid {
+            grid-template-columns: 1fr;
+        }
+
+        /* Tablet (≥768px) */
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dewey-section {
+                grid-template-columns: 1fr 2fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop (≥1024px) */
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: var(--space-sm);
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .utility-buttons {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Accessibility Toolbar -->
+<div class="accessibility-toolbar">
+    <div class="container">
+        <button class="accessibility-btn" aria-label="Increase text size">A+</button>
+        <button class="accessibility-btn" aria-label="Decrease text size">A-</button>
+        <button class="accessibility-btn" aria-label="Toggle high contrast mode">☀️ Contrast</button>
+        <button class="accessibility-btn" aria-label="Skip to navigation">Skip to Nav</button>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Public Library of Aniston-Calhoun County</div>
+
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Menu">☰</button>
+
+            <nav class="nav" aria-label="Main navigation">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Accessibility</a>
+                <a href="#" class="nav-link">Events</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center utility-buttons">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search..." aria-label="Search library catalog">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to Our Community Library</h1>
+            <p class="text-lg">Accessible to all, serving everyone in Aniston-Calhoun County.</p>
+            <div class="flex gap-sm">
+                <button class="bg-dark rounded-md p-sm">Get a Library Card</button>
+                <button class="border border-gray-800 rounded-md p-sm">Virtual Tour</button>
+            </div>
+        </section>
+
+        <!-- Quick Access Bento Grid -->
+        <section>
+            <h2>Quick Access</h2>
+            <div class="bento-grid">
+                <a href="#" class="bento-cell">
+                    <h3>Catalog Search</h3>
+                    <p>Find books, movies, and more in our collection</p>
+                </a>
+                <a href="#" class="bento-cell">
+                    <h3>Events Calendar</h3>
+                    <p>View upcoming programs and workshops</p>
+                </a>
+                <a href="#" class="bento-cell">
+                    <h3>Accessibility Hub</h3>
+                    <p>Services for all abilities</p>
+                </a>
+                <a href="#" class="bento-cell">
+                    <h3>Digital Library</h3>
+                    <p>eBooks and online resources</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Dewey Section -->
+        <section class="dewey-section">
+            <div class="dewey-image" aria-hidden="true"></div>
+            <div>
+                <h2>Meet Dewey, Our Library Cat</h2>
+                <p>Dewey has been welcoming visitors to our library since 2018. He loves naps in sunbeams, chin scratches, and occasionally helping patrons find books (by sitting on them).</p>
+                <div class="flex gap-sm">
+                    <a href="#">Dewey's Story →</a>
+                    <a href="#">Follow Dewey on Facebook</a>
+                </div>
+                <a href="#main-content" class="text-sm">Skip Dewey Content</a>
+            </div>
+        </section>
+
+        <!-- Hours & Accessibility -->
+        <section class="bento-grid">
+            <div class="bento-cell">
+                <h3>Hours & Locations</h3>
+                <p><strong>Main Branch:</strong> 9am - 6pm</p>
+                <p><strong>East Branch:</strong> 10am - 5pm</p>
+                <p><strong>Weekends:</strong> 12pm - 4pm</p>
+                <a href="#" class="inline-block mt-2">All locations</a>
+            </div>
+            <div class="bento-cell">
+                <h3>Accessibility Features</h3>
+                <ul>
+                    <li>Wheelchair ramps & elevators</li>
+                    <li>Noise-canceling headphones</li>
+                    <li>Braille materials</li>
+                </ul>
+                <a href="#" class="inline-block mt-2">Plan Your Visit</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h3>Contact Us</h3>
+                <p>123 Library Street</p>
+                <p>Aniston, AL 36201</p>
+                <p><a href="tel:+11234567890">(123) 456-7890</a></p>
+                <p><a href="mailto:info@anistonlibrary.org">info@anistonlibrary.org</a></p>
+            </div>
+            <div>
+                <h3>Connect With Us</h3>
+                <div class="flex gap-sm">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <div class="flex flex-col gap-xs">
+                    <a href="#">Accessibility Policy</a>
+                    <a href="#">Volunteer</a>
+                    <a href="#">Donate</a>
+                    <a href="#">Staff Portal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('active');
+    });
+
+    // Text size controls (simplified example)
+    const textSizeBtns = document.querySelectorAll('.accessibility-btn');
+    textSizeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (e.target.textContent.includes('A+')) {
+                document.documentElement.style.fontSize = '18px';
+            } else if (e.target.textContent.includes('A-')) {
+                document.documentElement.style.fontSize = '14px';
+            }
+        });
+    });
+</script>
+</body>
+</html>

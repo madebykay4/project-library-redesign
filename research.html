@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniston-Calhoun Library Redesign Research</title>
+    <style>
+        /* ===== RESEARCH DOCUMENTATION STYLES ===== */
+        :root {
+            --primary: #2C3E5D;
+            --secondary: #4A7061;
+            --accent: #B53412;
+            --light: #F5F2E8;
+            --dark: #212529;
+
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-md);
+        }
+
+        header {
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin: var(--space-md) 0 var(--space-sm) 0;
+        }
+
+        h1 {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: var(--text-2xl);
+            border-bottom: 1px solid var(--light);
+            padding-bottom: var(--space-xs);
+        }
+
+        h3 {
+            font-size: var(--text-xl);
+            color: var(--secondary);
+        }
+
+        section {
+            margin-bottom: var(--space-lg);
+        }
+
+        .methodology-card {
+            background: var(--light);
+            border-left: 4px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .persona {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: var(--space-md);
+            background: var(--light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+        }
+
+        .persona-img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            background: var(--secondary);
+            align-self: center;
+        }
+
+        .finding {
+            padding-left: var(--space-md);
+            border-left: 3px solid var(--secondary);
+            margin: var(--space-md) 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--primary);
+            padding: var(--space-sm);
+            background: rgba(181, 52, 18, 0.05);
+            border-radius: var(--radius-sm);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .recommendation {
+            background: white;
+            border: 1px solid var(--light);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: var(--radius-md);
+            position: relative;
+        }
+
+        .recommendation:before {
+            content: "★";
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-sm);
+        }
+
+        @media (max-width: 768px) {
+            .persona {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Aniston-Calhoun Public Library Redesign Research</h1>
+    <p>Evidence-based findings to inform an accessible, user-centered redesign</p>
+</header>
+
+<section id="overview">
+    <h2>Research Overview</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">85%</div>
+            <p>of seniors reported difficulty reading small text</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">70%</div>
+            <p>couldn't locate accessibility information</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">42</div>
+            <p>WCAG 2.1 AA violations identified</p>
+        </div>
+    </div>
+</section>
+
+<section id="methodology">
+    <h2>Research Methodology</h2>
+
+    <div class="methodology-card">
+        <h3>1. User Surveys & Interviews</h3>
+        <p><strong>Participants:</strong> 32 library patrons (18 seniors, 8 visually impaired users, 6 caregivers)</p>
+        <p><strong>Key Questions:</strong></p>
+        <ul>
+            <li>What tasks do you struggle to complete on our website?</li>
+            <li>How do you typically adjust text size or contrast?</li>
+            <li>Where would you expect to find accessibility information?</li>
+        </ul>
+    </div>
+
+    <div class="methodology-card">
+        <h3>2. Accessibility Audits</h3>
+        <p><strong>Tools Used:</strong> WAVE, Axe, ANDI</p>
+        <p><strong>Scope:</strong> Full WCAG 2.1 AA evaluation of 12 key pages</p>
+        <p><strong>Major Findings:</strong></p>
+        <ul>
+            <li>38 instances of insufficient color contrast</li>
+            <li>24 missing form labels</li>
+            <li>15 keyboard navigation traps</li>
+        </ul>
+    </div>
+
+    <div class="methodology-card">
+        <h3>3. Usability Testing</h3>
+        <p><strong>Tasks:</strong></p>
+        <ul>
+            <li>Find library hours for the main branch</li>
+            <li>Locate information about wheelchair accessibility</li>
+            <li>Register for an event using screen reader</li>
+        </ul>
+        <div class="quote">
+            "I gave up trying to reserve a book online. The buttons were too small, and I couldn't tell where to click."
+            <div class="citation">— Participant #12, age 68</div>
+        </div>
+    </div>
+</section>
+
+<section id="personas">
+    <h2>Primary User Persona</h2>
+
+    <div class="persona">
+        <div class="persona-img" aria-hidden="true"></div>
+        <div>
+            <h3>Margaret Thompson</h3>
+            <p><strong>Age:</strong> 72 | <strong>Location:</strong> Anniston, AL</p>
+            <p><strong>Occupation:</strong> Retired teacher</p>
+            <p><strong>Tech Proficiency:</strong> Basic (uses tablet with zoom)</p>
+            <p><strong>Disabilities:</strong> Low vision, mild arthritis</p>
+
+            <h4>Goals:</h4>
+            <ul>
+                <li>Adjust text size without horizontal scrolling</li>
+                <li>Find accessibility features before visiting</li>
+                <li>Navigate using keyboard only</li>
+            </ul>
+
+            <h4>Frustrations:</h4>
+            <ul>
+                <li>"The menu is confusing—I keep clicking the wrong buttons"</li>
+                <li>"I want to know if the library has elevators, but I can't find that information"</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="findings">
+    <h2>Key Findings</h2>
+
+    <div class="finding">
+        <h3>1. Text Accessibility Barriers</h3>
+        <ul>
+            <li>Default text size too small for 85% of seniors surveyed</li>
+            <li>No persistent text resizing controls available</li>
+            <li>Text overflow when zoomed to 150%+</li>
+        </ul>
+        <div class="quote">
+            "The text is too small, and I can't figure out how to make it bigger."
+            <div class="citation">— Participant #07, age 74</div>
+        </div>
+    </div>
+
+    <div class="finding">
+        <h3>2. Navigation Challenges</h3>
+        <ul>
+            <li>Average 3.4 minutes to locate accessibility information</li>
+            <li>Dropdown menus inaccessible to keyboard/screen reader users</li>
+            <li>67% task failure rate for event registration</li>
+        </ul>
+    </div>
+
+    <div class="finding">
+        <h3>3. Missing Accessibility Information</h3>
+        <ul>
+            <li>No centralized accessibility resource page</li>
+            <li>Building maps lack accessible route markers</li>
+            <li>Screen reader users couldn't locate operating hours</li>
+        </ul>
+    </div>
+</section>
+
+<section id="recommendations">
+    <h2>Design Recommendations</h2>
+
+    <div class="recommendation">
+        <h3>1. Implement WCAG 2.1 AA Standards</h3>
+        <ul>
+            <li>Add persistent accessibility toolbar (text resize, contrast toggle)</li>
+            <li>Ensure proper heading structure and ARIA landmarks</li>
+            <li>Fix all color contrast issues (minimum 4.5:1 ratio)</li>
+        </ul>
+    </div>
+
+    <div class="recommendation">
+        <h3>2. Simplify Navigation</h3>
+        <ul>
+            <li>Replace dropdowns with mega menu featuring large clickable areas</li>
+            <li>Add predictive search with autocomplete</li>
+            <li>Create clear "Accessibility Hub" in primary navigation</li>
+        </ul>
+    </div>
+
+    <div class="recommendation">
+        <h3>3. Add Visit Planning Tools</h3>
+        <ul>
+            <li>Interactive accessibility map showing elevators, quiet zones</li>
+            <li>Accommodation request form (ASL interpreters, etc.)</li>
+            <li>Service animal policy prominently displayed</li>
+        </ul>
+    </div>
+</section>
+
+<section id="validation">
+    <h2>Success Metrics</h2>
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Current</th>
+            <th>Target</th>
+        </tr>
+        <tr>
+            <td>Time to find hours</td>
+            <td>3.2 minutes</td>
+            <td>&lt; 30 seconds</td>
+        </tr>
+        <tr>
+            <td>Accessibility info completion</td>
+            <td>22% success</td>
+            <td>90% success</td>
+        </tr>
+        <tr>
+            <td>Screen reader task completion</td>
+            <td>18% success</td>
+            <td>85% success</td>
+        </tr>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Flows | Anniston-Calhoun Library</title>
+  <style>
+    :root {
+      --primary: #2C3E5D;
+      --secondary: #4A7061;
+      --accent: #B53412;
+      --light: #F5F2E8;
+      --dark: #212529;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2rem;
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+    }
+
+    header {
+      margin-bottom: var(--space-lg);
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .subtitle {
+      color: var(--secondary);
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+
+    .persona-banner {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin: var(--space-lg) 0;
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: var(--space-md);
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .persona-avatar {
+      width: 100%;
+      border-radius: 50%;
+      background: var(--secondary);
+      aspect-ratio: 1;
+    }
+
+    .persona-details h2 {
+      margin: 0 0 var(--space-xs) 0;
+      color: var(--primary);
+    }
+
+    .persona-tags {
+      display: flex;
+      gap: var(--space-xs);
+      flex-wrap: wrap;
+      margin: var(--space-xs) 0;
+    }
+
+    .tag {
+      background: var(--light);
+      padding: 0.25rem var(--space-xs);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+
+    .flow-section {
+      margin: var(--space-lg) 0;
+    }
+
+    .flow-diagram {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px dashed var(--gray-300);
+    }
+
+    .step-number {
+      background: var(--accent);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-accessibility {
+      background: var(--light);
+      padding: var(--space-sm);
+      border-radius: var(--radius-sm);
+      margin-top: var(--space-xs);
+      font-size: 0.9rem;
+    }
+
+    .accessibility-icon {
+      color: var(--secondary);
+      font-weight: bold;
+      margin-right: 0.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .persona-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .persona-avatar {
+        width: 80px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>User Flows</h1>
+    <p class="subtitle">Accessible pathways for primary personas</p>
+  </header>
+
+  <div class="persona-banner">
+    <div class="persona-avatar" aria-hidden="true"></div>
+    <div class="persona-details">
+      <h2>Margaret Thompson</h2>
+      <div class="persona-tags">
+        <span class="tag">Age 72</span>
+        <span class="tag">Low Vision</span>
+        <span class="tag">Tablet User</span>
+        <span class="tag">Keyboard Navigation</span>
+      </div>
+      <p>Retired teacher who needs large text and clear pathways to find library services.</p>
+    </div>
+  </div>
+
+  <div class="flow-section">
+    <h2>Flow 1: Finding Library Hours</h2>
+    <p>Margaret needs to check when the main branch is open before visiting.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Homepage Load</h3>
+          <p>Margaret lands on the homepage and immediately activates the text zoom to 150%.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Text reflows cleanly without horizontal scrolling. Skip link available to bypass header.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Access Hours Information</h3>
+          <p>She looks for the hours information in the main navigation.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Mega menu appears on focus with large clickable areas (48x48px). Screen reader announces "Hours and Locations section".
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>View Branch Hours</h3>
+          <p>She selects "Main Branch" from the locations list.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Accordion expands with high-contrast text. Keyboard users can tab through all branches.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-section">
+    <h2>Flow 2: Planning an Accessible Visit</h2>
+    <p>Margaret wants to confirm accessibility features before her visit.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Navigate to Accessibility Hub</h3>
+          <p>She clicks the "Accessibility" link in the primary navigation.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Persistent accessibility toolbar remains visible. Link has 3:1 contrast ratio.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Explore Interactive Map</h3>
+          <p>She uses the building map to locate elevators and quiet zones.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Map has text alternatives and can be navigated via keyboard. Landmarks announced by screen reader.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Request Accommodations</h3>
+          <p>She completes the "Plan Your Visit" form to request a magnifier.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Form fields have visible labels and error messages. Timeout warning for slow typists.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-section">
+    <h2>Flow 3: Attending an Event</h2>
+    <p>Margaret wants to register for a senior book club meeting.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Find Events Calendar</h3>
+          <p>She uses the quick-access "Events" card on the homepage.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Card has aria-label="Events calendar" and large hit area (minimum 44x44px).
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Filter for Accessible Events</h3>
+          <p>She applies the "Large Print" and "Wheelchair Accessible" filters.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Filter controls are keyboard operable. Selected filters announced by screen reader.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Complete Registration</h3>
+          <p>She registers using the simplified form with her existing library account.</p>
+          <div class="step-accessibility">
+            <span class="accessibility-icon">♿</span>
+            Form autocompletes known information. Success message includes confirmation email details.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
