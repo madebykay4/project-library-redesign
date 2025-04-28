@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Personas | Anniston-Calhoun Library</title>
+    <style>
+        :root {
+            --primary: #2C3E5D;
+            --secondary: #4A7061;
+            --accent: #B53412;
+            --light: #F5F2E8;
+            --dark: #212529;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+        }
+
+        header {
+            margin-bottom: var(--space-lg);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: var(--space-md);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+
+        .persona-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .persona-header {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-md);
+            position: relative;
+        }
+
+        .persona-name {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .persona-title {
+            font-weight: 400;
+            opacity: 0.9;
+            margin: var(--space-xs) 0 0 0;
+        }
+
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--secondary);
+            position: absolute;
+            right: var(--space-md);
+            top: 50%;
+            transform: translateY(-50%);
+            border: 3px solid white;
+        }
+
+        .persona-body {
+            padding: var(--space-md);
+        }
+
+        .persona-section {
+            margin-bottom: var(--space-md);
+        }
+
+        .persona-section h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            border-bottom: 1px solid var(--light);
+            padding-bottom: var(--space-xs);
+        }
+
+        .persona-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin: var(--space-sm) 0;
+        }
+
+        .tag {
+            background: var(--light);
+            padding: 0.25rem var(--space-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+
+        .tag-accessibility {
+            background: #E3F2FD;
+            color: #0D47A1;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--primary);
+            padding: var(--space-sm);
+            background: rgba(181, 52, 18, 0.05);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .needs-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .needs-list li {
+            padding: var(--space-xs) 0;
+            border-bottom: 1px dashed var(--light);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .needs-list li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: var(--space-xs);
+        }
+
+        @media (max-width: 768px) {
+            .persona-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .persona-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>User Personas</h1>
+        <p class="subtitle">Key user groups for the library redesign</p>
+    </header>
+
+    <main>
+        <div class="persona-grid">
+            <!-- Primary Persona -->
+            <div class="persona-card">
+                <div class="persona-header">
+                    <h2 class="persona-name">Margaret Thompson</h2>
+                    <p class="persona-title">Retired Teacher with Low Vision</p>
+                    <div class="persona-avatar" aria-hidden="true"></div>
+                </div>
+                <div class="persona-body">
+                    <div class="persona-section">
+                        <div class="persona-tags">
+                            <span class="tag">Age 72</span>
+                            <span class="tag tag-accessibility">Low Vision</span>
+                            <span class="tag">Tablet User</span>
+                            <span class="tag tag-accessibility">Keyboard Navigation</span>
+                        </div>
+                        <p>Retired educator who relies on the library for large print books and community events. Needs simple navigation and adjustable text sizes.</p>
+                    </div>
+
+                    <div class="quote">
+                        "I just want to find the library hours without asking my grandson for help every time."
+                    </div>
+
+                    <div class="persona-section">
+                        <h3>Goals</h3>
+                        <ul class="needs-list">
+                            <li>Adjust text size without horizontal scrolling</li>
+                            <li>Find accessibility features before visiting</li>
+                            <li>Navigate using keyboard only</li>
+                            <li>Learn about senior-focused programs</li>
+                        </ul>
+                    </div>
+
+                    <div class="persona-section">
+                        <h3>Frustrations</h3>
+                        <ul class="needs-list">
+                            <li>Small clickable areas that are hard to target</li>
+                            <li>Complex multi-level navigation menus</li>
+                            <li>Lack of clear accessibility information</li>
+                            <li>Forms that timeout before she can complete them</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Persona -->
+            <div class="persona-card">
+                <div class="persona-header" style="background: var(--secondary);">
+                    <h2 class="persona-name">James Wilson</h2>
+                    <p class="persona-title">College Student with Dyslexia</p>
+                    <div class="persona-avatar" aria-hidden="true"></div>
+                </div>
+                <div class="persona-body">
+                    <div class="persona-section">
+                        <div class="persona-tags">
+                            <span class="tag">Age 19</span>
+                            <span class="tag tag-accessibility">Dyslexia</span>
+                            <span class="tag">Student</span>
+                            <span class="tag">Mobile First</span>
+                        </div>
+                        <p>Community college student who uses the library's study spaces and digital resources. Needs dyslexia-friendly formatting options.</p>
+                    </div>
+
+                    <div class="quote">
+                        "If I can't change the font, I can't use the website. It's that simple."
+                    </div>
+
+                    <div class="persona-section">
+                        <h3>Goals</h3>
+                        <ul class="needs-list">
+                            <li>Switch to OpenDyslexic font</li>
+                            <li>Find study room reservation system</li>
+                            <li>Access digital resources from phone</li>
+                            <li>Quickly check computer lab availability</li>
+                        </ul>
+                    </div>
+
+                    <div class="persona-section">
+                        <h3>Frustrations</hli>
+                            <ul class="needs-list">
+                                <li>Dense blocks of justified text</li>
+                                <li>Complex academic database interfaces</li>
+                                <li>No text-to-speech for articles</li>
+                                <li>Mobile-unfriendly forms</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tertiary Persona -->
+            <div class="persona-card">
+                <div class="persona-header" style="background: var(--accent);">
+                    <h2 class="persona-name">Maria Garcia</h2>
+                    <p class="persona-title">ESL Parent with Limited Tech Experience</p>
+                    <div class="persona-avatar" aria-hidden="true"></div>
+                </div>
+                <div class="persona-body">
+                    <div class="persona-section">
+                        <div class="persona-tags">
+                            <span class="tag">Age 34</span>
+                            <span class="tag">Spanish Speaker</span>
+                            <span class="tag">Mobile Only</span>
+                            <span class="tag tag-accessibility">Language Barrier</span>
+                        </div>
+                        <p>Mother of two who visits the library for children's programs and ESL resources. Needs simple language options and visual navigation.</p>
+                    </div>
+
+                    <div class="quote">
+                        "I know the library has great kids programs, but the website is too complicated in any language."
+                    </div>
+
+                    <div class="persona-section">
+                        <h3>Goals</h3>
+                        <ul class="needs-list">
+                            <li>Find Spanish-language resources</li>
+                            <li>See pictures of library spaces</li>
+                            <li>Register children for storytime</li>
+                            <li>Get directions via public transit</li>
+                        </ul>
+                    </div>
+
+                    <div class="persona-section">
+                        <h3>Frustrations</h3>
+                        <ul class="needs-list">
+                            <li>Complex library jargon</li>
+                            <li>Text-heavy pages with few visuals</li>
+                            <li>Small touch targets on mobile</li>
+                            <li>No translation toggle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="persona-section" style="background: white; padding: var(--space-md); border-radius: var(--radius-md);">
+            <h2>Common Accessibility Needs</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md);">
+                <div>
+                    <h3>Visual</h3>
+                    <ul class="needs-list">
+                        <li>Text resizing to 200%</li>
+                        <li>High contrast mode</li>
+                        <li>Screen reader compatibility</li>
+                        <li>Alternative text for images</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Motor</h3>
+                    <ul class="needs-list">
+                        <li>Keyboard navigation</li>
+                        <li>Large clickable areas</li>
+                        <li>Voice control support</li>
+                        <li>No time-limited tasks</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Cognitive</h3>
+                    <ul class="needs-list">
+                        <li>Simple language options</li>
+                        <li>Consistent navigation</li>
+                        <li>Dyslexia-friendly fonts</li>
+                        <li>Clear error messages</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
